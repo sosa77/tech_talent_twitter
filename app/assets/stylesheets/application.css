@@ -17,3 +17,15 @@
 .invisible {
   display: none;
 }
+
+.small-text {
+  font-size: .75em;
+}
+
+.centered {
+  text-align: center;
+}
+
+body {
+  background-color: rgb(248,250,255)
+}

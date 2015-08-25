@@ -1,0 +1,41 @@
+
+
+<h1><%= @user.name %></h1>
+<h3><%= @user.username %></h3>
+<h3><%= @user.location %></h3>
+<h3><%= @user.bio %></h3>
+
+<div class="row">
+  <% @user.tweets.each do |tweet| %>
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <p><%= tweet.message %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+<% if current_user.id != @user.id %>
+<% if current_user.following.include?(@user.id) %>
+<div>
+  <%= form_tag('/unfollow') do %>
+    <span class="invisible">
+      <%= text_field_tag :unfollow_id, @user.id %>
+    </span><br>
+    <%= submit_tag "Unfollow", class: 'btn btn-danger' %>
+  <% end %>
+</div>
+<% else %>
+<div>
+  <%= form_tag('/now_following') do %>
+    <span class="invisible">
+      <%= text_field_tag :follow_id, @user.id %>
+    </span><br>
+    <%= submit_tag "Follow", class: 'btn btn-primary' %>
+  <% end %>
+</div>
+<% end %>
+<% end %>

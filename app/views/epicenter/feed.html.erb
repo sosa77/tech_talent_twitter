@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <h3>Your Twitter Feed</h3>
+      <p>Here's what your firends are saying:</p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 panel panel-default">
+    <div class="panel-body">
+      <div class="row">
+        <h3><%= current_user.name %></h3>
+        <p><%= current_user.username %></p>
+      </div>
+      <div class="row">
+        <div class="col-md-4 centered">
+          <span class="small-text">TWEETS</span><br>
+          <%= current_user.tweets.count %>
+        </div>
+        <div class="col-md-4 centered">
+          <span class="small-text">FOLLOWING</span><br>
+          <%= current_user.following.length %>
+        </div>
+        <div class="col-md-4 centered">
+          <span class="small-text">FOLLOWERS</span><br>
+          <%= @follower_count %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-7 col-md-offset-1 panel panel-default">
+    <div class="panel-body">
+      <% @following_tweets.each do |f| %>
+        <p><%= f.message %></p>
+        <p><strong><em><%= f.user.username %></em></strong></p>
+      <% end %>
+    </div>
+  </div>
+</div>
